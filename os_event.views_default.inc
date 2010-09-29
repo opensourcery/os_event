@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Helper to implementation of hook_views_default_views().
+ * Implementation of hook_views_default_views().
  */
-function _os_event_views_default_views() {
+function os_event_views_default_views() {
   $views = array();
 
   // Exported view: event_calendar
@@ -222,12 +222,15 @@ function _os_event_views_default_views() {
   $handler->override_option('use_more', 0);
   $handler->override_option('style_plugin', 'calendar_nav');
   $handler = $view->new_display('calendar', 'Calendar page', 'calendar_1');
+  $handler->override_option('style_options', NULL);
+  $handler->override_option('row_plugin', '');
+  $handler->override_option('row_options', NULL);
   $handler->override_option('path', 'events/calendar');
   $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => '',
+    'type' => 'tab',
+    'title' => 'Calendar',
     'description' => '',
-    'weight' => 0,
+    'weight' => '2',
     'name' => 'navigation',
   ));
   $handler->override_option('tab_options', array(
@@ -245,6 +248,9 @@ function _os_event_views_default_views() {
   $handler->override_option('calendar_popup', 0);
   $handler->override_option('calendar_date_link', '');
   $handler = $view->new_display('calendar_block', 'Calendar block', 'calendar_block_1');
+  $handler->override_option('style_options', NULL);
+  $handler->override_option('row_plugin', '');
+  $handler->override_option('row_options', NULL);
   $handler->override_option('block_description', 'Calendar');
   $handler->override_option('block_caching', -1);
   $handler = $view->new_display('calendar_period', 'Year view', 'calendar_period_1');
@@ -677,6 +683,8 @@ function _os_event_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('title', 'Events');
+  $handler->override_option('empty', 'No events found.');
+  $handler->override_option('empty_format', '1');
   $handler->override_option('use_pager', '1');
   $handler->override_option('style_plugin', 'semanticviews_default');
   $handler->override_option('style_options', array(
@@ -816,20 +824,20 @@ function _os_event_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('path', 'events');
+  $handler->override_option('path', 'events/view');
   $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => '',
+    'type' => 'default tab',
+    'title' => 'Events',
     'description' => '',
     'weight' => '0',
     'name' => 'navigation',
   ));
   $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
+    'type' => 'normal',
+    'title' => 'Events',
     'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
+    'weight' => '0',
+    'name' => 'primary-links',
   ));
   $handler = $view->new_display('page', 'Event archives', 'page_2');
   $handler->override_option('sorts', array(
