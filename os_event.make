@@ -1,6 +1,7 @@
 ; $Id$
 
 core = 6.x
+api = 2
 
 ; Calendar - grab 2.x-dev version *and* apply many patches.
 ; Patch at node 613528 is not necessary since we're using dev version
