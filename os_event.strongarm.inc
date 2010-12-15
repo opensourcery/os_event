@@ -11,12 +11,16 @@ function os_event_strongarm() {
   $strongarm->name = 'content_extra_weights_event';
   $strongarm->value = array(
     'title' => '-5',
-    'body_field' => '-3',
+    'body_field' => '-4',
     'revision_information' => '1',
     'author' => '0',
     'options' => '2',
+    'comment_settings' => '6',
     'menu' => '-1',
     'path' => '3',
+    'attachments' => '7',
+    'path_redirect' => '5',
+    'print' => '4',
   );
 
   $export['content_extra_weights_event'] = $strongarm;

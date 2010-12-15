@@ -76,17 +76,18 @@ function os_event_content_default_fields() {
     'field_name' => 'field_event_image',
     'type_name' => 'event',
     'display_settings' => array(
+      'weight' => '-2',
+      'parent' => '',
       'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
+        'format' => 'hidden',
       ),
       'teaser' => array(
-        'format' => 'image_plain',
+        'format' => 'event-list_linked',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       '4' => array(
         'format' => 'image_plain',
