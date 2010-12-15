@@ -18,3 +18,8 @@ projects[calendar][patch][] = "http://drupal.org/files/issues/calendar.732896.pa
 ; Project-specific modules, and overrides.
 projects[date][subdir] = "contrib"
 projects[date][version] = "2.6"
+
+projects[semanticviews][subdir] = "contrib"
+projects[semanticviews][version] = "1.1"
+; http://drupal.org/node/832048#comment-3509372
+projects[semanticviews][patch][] = "http://drupal.org/files/issues/semanticviews-832048-3.patch"
