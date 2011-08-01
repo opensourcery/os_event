@@ -1,971 +1,257 @@
 <?php
+/**
+ * @file
+ * os_event.views_default.inc
+ */
 
 /**
  * Implementation of hook_views_default_views().
  */
 function os_event_views_default_views() {
-  $views = array();
+  $export = array();
 
-  // Exported view: event_calendar
   $view = new view;
-  $view->name = 'event_calendar';
-  $view->description = 'A multi-dimensional calendar view with back/next navigation.';
-  $view->tag = 'OpenSourcery';
-  $view->view_php = '';
+  $view->name = 'event_listing';
+  $view->description = '';
+  $view->tag = 'default';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->human_name = 'event_listing';
+  $view->core = 7;
+  $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->override_option('fields', array(
-    'title' => array(
-      'label' => '',
-      'link_to_node' => 1,
-      'exclude' => 0,
-      'id' => 'title',
-      'field' => 'title',
-      'table' => 'node',
-      'relationship' => 'none',
-    ),
-    'field_event_date_value' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'time',
-      'multiple' => array(
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_to' => '',
-        'group' => TRUE,
-      ),
-      'repeat' => array(
-        'show_repeat_rule' => '',
-      ),
-      'fromto' => array(
-        'fromto' => 'both',
-      ),
-      'exclude' => 0,
-      'id' => 'field_event_date_value',
-      'table' => 'node_data_field_event_date',
-      'field' => 'field_event_date_value',
-      'relationship' => 'none',
-    ),
-    'field_event_date_value2' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'default',
-      'multiple' => array(
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_to' => '',
-        'group' => TRUE,
-      ),
-      'repeat' => array(
-        'show_repeat_rule' => '',
-      ),
-      'fromto' => array(
-        'fromto' => 'both',
-      ),
-      'exclude' => 1,
-      'id' => 'field_event_date_value2',
-      'table' => 'node_data_field_event_date',
-      'field' => 'field_event_date_value2',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('sorts', array(
-    'changed' => array(
-      'order' => 'ASC',
-      'delta' => '-1',
-      'id' => 'changed',
-      'table' => 'node',
-      'field' => 'changed',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('arguments', array(
-    'date_argument' => array(
-      'default_action' => 'default',
-      'style_plugin' => 'default_summary',
-      'style_options' => array(),
-      'wildcard' => 'all',
-      'wildcard_substitution' => 'All',
-      'title' => '',
-      'breadcrumb' => '',
-      'default_argument_type' => 'date',
-      'default_argument' => '',
-      'validate_type' => 'none',
-      'validate_fail' => 'not found',
-      'date_fields' => array(
-        'node_data_field_event_date.field_event_date_value' => 'node_data_field_event_date.field_event_date_value',
-        'node_data_field_event_date.field_event_date_value2' => 'node_data_field_event_date.field_event_date_value2',
-      ),
-      'year_range' => '-3:+3',
-      'date_method' => 'OR',
-      'granularity' => 'month',
-      'id' => 'date_argument',
-      'table' => 'node',
-      'field' => 'date_argument',
-      'relationship' => 'none',
-      'default_argument_user' => 0,
-      'default_argument_fixed' => '',
-      'default_argument_php' => '',
-      'validate_argument_node_type' => array(
-        'event' => 0,
-        'page' => 0,
-      ),
-      'validate_argument_node_access' => 0,
-      'validate_argument_nid_type' => 'nid',
-      'validate_argument_vocabulary' => array(),
-      'validate_argument_type' => 'tid',
-      'validate_argument_php' => '',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'default_options_div_prefix' => '',
-      'validate_user_argument_type' => 'uid',
-      'validate_user_roles' => array(
-        '2' => 0,
-        '4' => 0,
-        '3' => 0,
-      ),
-      'validate_argument_transform' => 0,
-      'validate_user_restrict_roles' => 0,
-    ),
-  ));
-  $handler->override_option('filters', array(
-    'status' => array(
-      'operator' => '=',
-      'value' => 1,
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status',
-      'table' => 'node',
-      'field' => 'status',
-      'relationship' => 'none',
-    ),
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'event' => 'event',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('access', array(
-    'type' => 'none',
-    'role' => array(),
-    'perm' => '',
-  ));
-  $handler->override_option('cache', array(
-    'type' => 'none',
-  ));
-  $handler->override_option('title', 'Calendar');
-  $handler->override_option('header_empty', 1);
-  $handler->override_option('items_per_page', 0);
-  $handler->override_option('use_more', 0);
-  $handler->override_option('style_plugin', 'calendar_nav');
-  $handler = $view->new_display('calendar', 'Calendar page', 'calendar_1');
-  $handler->override_option('style_options', NULL);
-  $handler->override_option('row_plugin', '');
-  $handler->override_option('row_options', NULL);
-  $handler->override_option('path', 'events/calendar');
-  $handler->override_option('menu', array(
-    'type' => 'tab',
-    'title' => 'Calendar',
-    'description' => '',
-    'weight' => '2',
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('calendar_colors', array(
-    '0' => array(),
-  ));
-  $handler->override_option('calendar_colors_vocabulary', array());
-  $handler->override_option('calendar_colors_taxonomy', array());
-  $handler->override_option('calendar_popup', 0);
-  $handler->override_option('calendar_date_link', '');
-  $handler = $view->new_display('calendar_block', 'Calendar block', 'calendar_block_1');
-  $handler->override_option('style_options', NULL);
-  $handler->override_option('row_plugin', '');
-  $handler->override_option('row_options', NULL);
-  $handler->override_option('block_description', 'Calendar');
-  $handler->override_option('block_caching', -1);
-  $handler = $view->new_display('calendar_period', 'Year view', 'calendar_period_1');
-  $handler->override_option('style_plugin', 'calendar_style');
-  $handler->override_option('style_options', array(
-    'display_type' => 'year',
-    'name_size' => 1,
-    'max_items' => 0,
-  ));
-  $handler->override_option('attachment_position', 'after');
-  $handler->override_option('inherit_arguments', TRUE);
-  $handler->override_option('inherit_exposed_filters', TRUE);
-  $handler->override_option('inherit_pager', FALSE);
-  $handler->override_option('render_pager', TRUE);
-  $handler->override_option('displays', array(
-    'calendar_1' => 'calendar_1',
-    'default' => 0,
-    'calendar_block_1' => 0,
-  ));
-  $handler->override_option('calendar_type', 'year');
-  $handler = $view->new_display('calendar_period', 'Month view', 'calendar_period_2');
-  $handler->override_option('style_plugin', 'calendar_style');
-  $handler->override_option('style_options', array(
-    'display_type' => 'month',
-    'name_size' => '99',
-    'with_weekno' => '1',
-    'date_fields' => NULL,
-    'max_items' => 0,
-  ));
-  $handler->override_option('attachment_position', 'after');
-  $handler->override_option('inherit_arguments', TRUE);
-  $handler->override_option('inherit_exposed_filters', TRUE);
-  $handler->override_option('inherit_pager', FALSE);
-  $handler->override_option('render_pager', TRUE);
-  $handler->override_option('displays', array(
-    'calendar_1' => 'calendar_1',
-    'default' => 0,
-    'calendar_block_1' => 0,
-  ));
-  $handler->override_option('calendar_type', 'month');
-  $handler = $view->new_display('calendar_period', 'Day view', 'calendar_period_3');
-  $handler->override_option('style_plugin', 'calendar_style');
-  $handler->override_option('style_options', array(
-    'name_size' => '99',
-    'with_weekno' => 0,
-    'max_items' => 0,
-    'max_items_behavior' => 'more',
-    'groupby_times' => 'hour',
-    'groupby_times_custom' => '',
-    'groupby_field' => '',
-  ));
-  $handler->override_option('attachment_position', 'after');
-  $handler->override_option('inherit_arguments', TRUE);
-  $handler->override_option('inherit_exposed_filters', TRUE);
-  $handler->override_option('inherit_pager', FALSE);
-  $handler->override_option('render_pager', TRUE);
-  $handler->override_option('displays', array(
-    'calendar_1' => 'calendar_1',
-    'default' => 0,
-    'calendar_block_1' => 0,
-  ));
-  $handler->override_option('calendar_type', 'day');
-  $handler = $view->new_display('calendar_period', 'Week view', 'calendar_period_4');
-  $handler->override_option('style_plugin', 'calendar_style');
-  $handler->override_option('style_options', array(
-    'name_size' => '99',
-    'with_weekno' => 0,
-    'max_items' => 0,
-    'max_items_behavior' => 'more',
-    'groupby_times' => 'hour',
-    'groupby_times_custom' => '',
-    'groupby_field' => '',
-  ));
-  $handler->override_option('attachment_position', 'after');
-  $handler->override_option('inherit_arguments', TRUE);
-  $handler->override_option('inherit_exposed_filters', TRUE);
-  $handler->override_option('inherit_pager', FALSE);
-  $handler->override_option('render_pager', TRUE);
-  $handler->override_option('displays', array(
-    'calendar_1' => 'calendar_1',
-    'default' => 0,
-    'calendar_block_1' => 0,
-  ));
-  $handler->override_option('calendar_type', 'week');
-  $handler = $view->new_display('calendar_period', 'Block view', 'calendar_period_5');
-  $handler->override_option('style_plugin', 'calendar_style');
-  $handler->override_option('style_options', array(
-    'display_type' => 'month',
-    'name_size' => '1',
-  ));
-  $handler->override_option('attachment_position', 'after');
-  $handler->override_option('inherit_arguments', TRUE);
-  $handler->override_option('inherit_exposed_filters', TRUE);
-  $handler->override_option('inherit_pager', FALSE);
-  $handler->override_option('render_pager', TRUE);
-  $handler->override_option('displays', array(
-    'calendar_1' => 0,
-    'default' => 0,
-    'calendar_block_1' => 'calendar_block_1',
-  ));
-  $handler->override_option('calendar_type', 'month');
-  $handler = $view->new_display('block', 'Upcoming', 'block_1');
-  $handler->override_option('fields', array(
-    'title' => array(
-      'label' => '',
-      'link_to_node' => 1,
-      'exclude' => 0,
-      'id' => 'title',
-      'field' => 'title',
-      'table' => 'node',
-      'relationship' => 'none',
-      'format' => 'default',
-    ),
-    'changed' => array(
-      'label' => '',
-      'link_to_node' => 0,
-      'exclude' => 0,
-      'id' => 'changed',
-      'field' => 'changed',
-      'table' => 'node',
-      'relationship' => 'none',
-      'date_format' => 'small',
-      'format' => 'default',
-    ),
-  ));
-  $handler->override_option('arguments', array());
-  $handler->override_option('filters', array(
-    'status' => array(
-      'operator' => '=',
-      'value' => 1,
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status',
-      'table' => 'node',
-      'field' => 'status',
-      'relationship' => 'none',
-    ),
-    'date_filter' => array(
-      'operator' => '>=',
-      'value' => array(
-        'value' => NULL,
-        'min' => NULL,
-        'max' => NULL,
-        'default_date' => 'now',
-        'default_to_date' => '',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'date_fields' => array(
-        'node.changed' => 'node.changed',
-      ),
-      'granularity' => 'day',
-      'form_type' => 'date_select',
-      'default_date' => 'now',
-      'default_to_date' => '',
-      'id' => 'date_filter',
-      'table' => 'node',
-      'field' => 'date_filter',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('title', 'Upcoming');
-  $handler->override_option('items_per_page', 5);
-  $handler->override_option('use_more', 1);
-  $handler->override_option('style_plugin', 'list');
-  $handler->override_option('style_options', array(
-    'grouping' => '',
-    'type' => 'ul',
-  ));
-  $handler->override_option('block_description', 'Upcoming');
-  $handler->override_option('block_caching', -1);
 
-  $views[$view->name] = $view;
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Events';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Fields: Date */
+  $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_event_date']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_event_date']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_event_date']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_event_date']['settings'] = array(
+    'format_type' => 'time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['fields']['field_event_date']['field_api_classes'] = 0;
+  /* Sort criterion: Fields: Date (field_event_date) - value */
+  $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['sorts']['field_event_date_value']['field'] = 'field_event_date_value';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+  );
+  /* Filter criterion: Fields: Date (field_event_date) - value */
+  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value']['granularity'] = 'day';
+  $handler->display->display_options['filters']['field_event_date_value']['form_type'] = 'date_select';
+  $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_event_date_value']['default_to_date'] = '';
+  $handler->display->display_options['filters']['field_event_date_value']['year_range'] = '-3:+3';
 
-  // Exported view: event_list
-  $view = new view;
-  $view->name = 'event_list';
-  $view->description = 'Event listing';
-  $view->tag = 'OpenSourcery';
-  $view->view_php = '';
-  $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-  $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->override_option('fields', array(
-    'field_event_image_fid' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'event-list_linked',
-      'multiple' => array(
-        'group' => 1,
-        'multiple_number' => '1',
-        'multiple_from' => '0',
-        'multiple_reversed' => 0,
-      ),
-      'exclude' => 0,
-      'id' => 'field_event_image_fid',
-      'table' => 'node_data_field_event_image',
-      'field' => 'field_event_image_fid',
-      'relationship' => 'none',
-    ),
-    'title' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 1,
-      'exclude' => 0,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'relationship' => 'none',
-    ),
-    'field_event_date_value_1' => array(
-      'label' => 'Date',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'custom',
-      'format' => 'day',
-      'multiple' => array(
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_to' => '',
-        'group' => TRUE,
-      ),
-      'repeat' => array(
-        'show_repeat_rule' => '',
-      ),
-      'fromto' => array(
-        'fromto' => 'both',
-      ),
-      'exclude' => 0,
-      'id' => 'field_event_date_value_1',
-      'table' => 'node_data_field_event_date',
-      'field' => 'field_event_date_value',
-      'relationship' => 'none',
-    ),
-    'field_event_date_value' => array(
-      'label' => 'Time',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'custom',
-      'format' => 'time',
-      'multiple' => array(
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_to' => '',
-        'group' => TRUE,
-      ),
-      'repeat' => array(
-        'show_repeat_rule' => '',
-      ),
-      'fromto' => array(
-        'fromto' => 'both',
-      ),
-      'exclude' => 0,
-      'id' => 'field_event_date_value',
-      'table' => 'node_data_field_event_date',
-      'field' => 'field_event_date_value',
-      'relationship' => 'none',
-    ),
-    'teaser' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 1,
-        'max_length' => '342',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 1,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'exclude' => 0,
-      'id' => 'teaser',
-      'table' => 'node_revisions',
-      'field' => 'teaser',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('sorts', array(
-    'created' => array(
-      'order' => 'DESC',
-      'granularity' => 'second',
-      'id' => 'created',
-      'table' => 'node',
-      'field' => 'created',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('filters', array(
-    'status_extra' => array(
-      'operator' => '=',
-      'value' => '',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status_extra',
-      'table' => 'node',
-      'field' => 'status_extra',
-      'relationship' => 'none',
-    ),
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'event' => 'event',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('access', array(
-    'type' => 'none',
-  ));
-  $handler->override_option('cache', array(
-    'type' => 'none',
-  ));
-  $handler->override_option('title', 'Events');
-  $handler->override_option('empty', 'No events found.');
-  $handler->override_option('empty_format', '1');
-  $handler->override_option('use_pager', '1');
-  $handler->override_option('style_plugin', 'semanticviews_default');
-  $handler->override_option('style_options', array(
-    'grouping' => '',
-    'group' => array(
-      'element_type' => 'h3',
-      'class' => 'title',
-    ),
-    'list' => array(
-      'element_type' => 'ul',
-      'class' => '',
-    ),
-    'row' => array(
-      'element_type' => 'li',
-      'class' => 'event clear-block',
-      'last_every_nth' => '0',
-      'first_class' => 'first',
-      'last_class' => 'last',
-      'striping_classes' => 'odd even',
-    ),
-  ));
-  $handler->override_option('row_plugin', 'semanticviews_fields');
-  $handler->override_option('row_options', array(
-    'semantic_html' => array(
-      'field_event_image_fid' => array(
-        'element_type' => 'div',
-        'class' => 'event-image',
-        'wrapper_element_type' => '',
-        'wrapper_class' => '',
-      ),
-      'title' => array(
-        'element_type' => 'h3',
-        'class' => '',
-        'wrapper_element_type' => '',
-        'wrapper_class' => 'event-details',
-      ),
-      'field_event_date_value_1' => array(
-        'element_type' => 'div',
-        'class' => '',
-        'wrapper_element_type' => '',
-        'wrapper_class' => 'event-details',
-        'label_element_type' => 'label',
-        'label_class' => '',
-      ),
-      'field_event_date_value' => array(
-        'element_type' => 'div',
-        'class' => '',
-        'wrapper_element_type' => '',
-        'wrapper_class' => 'event-details',
-        'label_element_type' => 'label',
-        'label_class' => '',
-      ),
-      'teaser' => array(
-        'element_type' => 'div',
-        'class' => '',
-        'wrapper_element_type' => '',
-        'wrapper_class' => 'event-details',
-      ),
-    ),
-    'skip_blank' => 0,
-  ));
-  $handler = $view->new_display('page', 'Upcoming events', 'page_1');
-  $handler->override_option('sorts', array(
-    'field_event_date_value' => array(
-      'order' => 'ASC',
-      'delta' => -1,
-      'id' => 'field_event_date_value',
-      'table' => 'node_data_field_event_date',
-      'field' => 'field_event_date_value',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('filters', array(
-    'status_extra' => array(
-      'operator' => '=',
-      'value' => '',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status_extra',
-      'table' => 'node',
-      'field' => 'status_extra',
-      'relationship' => 'none',
-    ),
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'event' => 'event',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-    ),
-    'date_filter' => array(
-      'operator' => '>=',
-      'value' => array(
-        'min' => NULL,
-        'max' => NULL,
-        'value' => NULL,
-        'default_date' => 'now',
-        'default_to_date' => '',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'date_fields' => array(
-        'node_data_field_event_date.field_event_date_value2' => 'node_data_field_event_date.field_event_date_value2',
-      ),
-      'date_method' => 'OR',
-      'granularity' => 'minute',
-      'form_type' => 'date_select',
-      'default_date' => 'now',
-      'default_to_date' => '',
-      'year_range' => '-3:+3',
-      'id' => 'date_filter',
-      'table' => 'node',
-      'field' => 'date_filter',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('path', 'events/view');
-  $handler->override_option('menu', array(
-    'type' => 'default tab',
-    'title' => 'Events',
-    'description' => '',
-    'weight' => '0',
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'normal',
-    'title' => 'Events',
-    'description' => '',
-    'weight' => '0',
-    'name' => 'primary-links',
-  ));
-  $handler = $view->new_display('page', 'Event archives', 'page_2');
-  $handler->override_option('sorts', array(
-    'field_event_date_value' => array(
-      'order' => 'DESC',
-      'delta' => -1,
-      'id' => 'field_event_date_value',
-      'table' => 'node_data_field_event_date',
-      'field' => 'field_event_date_value',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('filters', array(
-    'status_extra' => array(
-      'operator' => '=',
-      'value' => '',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status_extra',
-      'table' => 'node',
-      'field' => 'status_extra',
-      'relationship' => 'none',
-    ),
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'event' => 'event',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-    ),
-    'date_filter' => array(
-      'operator' => '<=',
-      'value' => array(
-        'min' => NULL,
-        'max' => NULL,
-        'value' => NULL,
-        'default_date' => 'now',
-        'default_to_date' => '',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'date_fields' => array(
-        'node_data_field_event_date.field_event_date_value2' => 'node_data_field_event_date.field_event_date_value2',
-      ),
-      'date_method' => 'OR',
-      'granularity' => 'minute',
-      'form_type' => 'date_select',
-      'default_date' => 'now',
-      'default_to_date' => '',
-      'year_range' => '-3:+3',
-      'id' => 'date_filter',
-      'table' => 'node',
-      'field' => 'date_filter',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('path', 'events/archive');
-  $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler = $view->new_display('feed', 'Feed', 'feed_1');
-  $handler->override_option('style_plugin', 'rss');
-  $handler->override_option('style_options', array(
-    'mission_description' => FALSE,
-    'description' => '',
-  ));
-  $handler->override_option('row_plugin', 'node_rss');
-  $handler->override_option('row_options', array(
-    'relationship' => 'none',
-    'item_length' => 'default',
-  ));
-  $handler->override_option('path', 'events/rss.xml');
-  $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('displays', array(
+  /* Display: Upcoming events */
+  $handler = $view->new_display('page', 'Upcoming events', 'page_upcoming');
+  $handler->display->display_options['path'] = 'events/list';
+  $handler->display->display_options['menu']['type'] = 'default tab';
+  $handler->display->display_options['menu']['title'] = 'Events';
+  $handler->display->display_options['menu']['weight'] = '27';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['tab_options']['type'] = 'normal';
+  $handler->display->display_options['tab_options']['title'] = 'Events';
+  $handler->display->display_options['tab_options']['weight'] = '0';
+  $handler->display->display_options['tab_options']['name'] = 'main-menu';
+
+  /* Display: Feed */
+  $handler = $view->new_display('feed', 'Feed', 'feed');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+  );
+  $handler->display->display_options['path'] = 'events/rss.xml';
+  $handler->display->display_options['displays'] = array(
+    'default' => 'default',
+    'page' => 'page',
     'page_1' => 'page_1',
-    'page_2' => 'page_2',
-    'default' => 0,
-  ));
-  $handler->override_option('sitename_title', FALSE);
+  );
 
-  $views[$view->name] = $view;
+  /* Display: Past events */
+  $handler = $view->new_display('page', 'Past events', 'page_past');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Past events';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Fields: Date (field_event_date) - value */
+  $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['sorts']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['sorts']['field_event_date_value']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+  );
+  /* Filter criterion: Fields: Date (field_event_date) - value */
+  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value']['granularity'] = 'day';
+  $handler->display->display_options['filters']['field_event_date_value']['form_type'] = 'date_select';
+  $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_event_date_value']['default_to_date'] = '';
+  $handler->display->display_options['filters']['field_event_date_value']['year_range'] = '-3:+3';
+  $handler->display->display_options['path'] = 'events/past';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Past events';
+  $handler->display->display_options['menu']['weight'] = '77';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['tab_options']['type'] = 'normal';
+  $handler->display->display_options['tab_options']['title'] = 'Events';
+  $handler->display->display_options['tab_options']['weight'] = '0';
+  $handler->display->display_options['tab_options']['name'] = 'main-menu';
 
-  return $views;
+  /* Display: Calendar */
+  $handler = $view->new_display('page', 'Calendar', 'page_calendar');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'fullcalendar';
+  $handler->display->display_options['style_options']['modules']['fc_theme'] = 0;
+  $handler->display->display_options['style_options']['modules']['fc_window'] = 0;
+  $handler->display->display_options['style_options']['times']['fc_clock'] = 0;
+  $handler->display->display_options['style_options']['times']['fc_default_date'] = 0;
+  $handler->display->display_options['style_options']['times']['fc_date'] = array(
+    'year' => '1900',
+    'month' => '1',
+    'day' => '1',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fullcalendar_node';
+  $handler->display->display_options['row_options']['custom']['fc_title_field'] = 'title';
+  $handler->display->display_options['row_options']['custom']['fc_url_field'] = 'title';
+  $handler->display->display_options['row_options']['custom']['fc_date_field'] = array(
+    'field_event_date' => 'field_event_date',
+  );
+  $handler->display->display_options['row_options']['custom']['fc_title'] = 0;
+  $handler->display->display_options['row_options']['custom']['fc_url'] = 0;
+  $handler->display->display_options['row_options']['custom']['fc_date'] = 1;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['path'] = 'events/calendar';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Calendar';
+  $handler->display->display_options['menu']['weight'] = '33';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['tab_options']['type'] = 'normal';
+  $handler->display->display_options['tab_options']['title'] = 'Events';
+  $handler->display->display_options['tab_options']['weight'] = '0';
+  $handler->display->display_options['tab_options']['name'] = 'main-menu';
+  $translatables['event_listing'] = array(
+    t('Master'),
+    t('Events'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('Upcoming events'),
+    t('Feed'),
+    t('Past events'),
+    t('Calendar'),
+  );
+  $export['event_listing'] = $view;
+
+  return $export;
 }
