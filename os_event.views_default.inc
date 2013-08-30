@@ -82,17 +82,18 @@ function os_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'now';
 
   /* Display: Upcoming events */
-  $handler = $view->new_display('page', 'Upcoming events', 'page_upcoming');
+  $handler = $view->new_display('panel_pane', 'Upcoming events', 'panel_pane_upcoming');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'events/list';
-  $handler->display->display_options['menu']['type'] = 'default tab';
-  $handler->display->display_options['menu']['title'] = 'Events';
-  $handler->display->display_options['menu']['weight'] = '27';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Events';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
+  $handler->display->display_options['allow']['use_pager'] = 'use_pager';
+  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 'more_link';
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 'fields_override';
+  $handler->display->display_options['inherit_panels_path'] = '0';
 
   /* Display: Feed */
   $handler = $view->new_display('feed', 'Feed', 'feed');
@@ -130,7 +131,7 @@ function os_event_views_default_views() {
   );
 
   /* Display: Past events */
-  $handler = $view->new_display('page', 'Past events', 'page_past');
+  $handler = $view->new_display('panel_pane', 'Past events', 'panel_pane_past');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Past events';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
@@ -162,18 +163,9 @@ function os_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'now';
-  $handler->display->display_options['path'] = 'events/past';
-  $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Past events';
-  $handler->display->display_options['menu']['weight'] = '77';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Events';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
 
   /* Display: Calendar */
-  $handler = $view->new_display('page', 'Calendar', 'page_calendar');
+  $handler = $view->new_display('panel_pane', 'Calendar', 'panel_pane_calendar');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'fullcalendar';
@@ -181,15 +173,6 @@ function os_event_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  $handler->display->display_options['path'] = 'events/calendar';
-  $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Calendar';
-  $handler->display->display_options['menu']['weight'] = '33';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Events';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_upcoming');
