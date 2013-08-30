@@ -5,15 +5,15 @@
  */
 
 /**
- * Implementation of hook_user_default_roles().
+ * Implements hook_user_default_roles().
  */
 function os_event_user_default_roles() {
   $roles = array();
 
-  // Exported role: event administrator
+  // Exported role: event administrator.
   $roles['event administrator'] = array(
     'name' => 'event administrator',
-    'weight' => '5',
+    'weight' => 5,
   );
 
   return $roles;
