@@ -59,7 +59,46 @@ function os_event_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-event-field_event_category'
+  $field_instances['node-event-field_event_category'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_event_category',
+    'label' => 'Event Category',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 1,
     ),
   );
 
@@ -134,7 +173,7 @@ function os_event_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -183,7 +222,7 @@ function os_event_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -191,6 +230,7 @@ function os_event_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Date');
+  t('Event Category');
   t('Location');
 
   return $field_instances;
