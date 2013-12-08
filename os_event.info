@@ -54,6 +54,7 @@ features[variable][] = comment_form_location_event
 features[variable][] = comment_preview_event
 features[variable][] = comment_subject_field_event
 features[variable][] = field_bundle_settings_node__event
+features[variable][] = fullcalendar_path
 features[variable][] = menu_options_event
 features[variable][] = menu_parent_event
 features[variable][] = node_options_event
